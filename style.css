@@ -1,21 +1,24 @@
-:root{
+/* General Styles */
+:root {
     --background: #101114;
     --primary-color: #1C1D20;
     --secondary-color: #4A4D57;
     --accent-color: #00FFC4;
     --text-color: #F9F9F9;
+    --border-color: #3E3F41;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-html{
+html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16pt;
-    color:var(--text-color);
+    color: var(--text-color);
 }
+
 body {
     min-height: 100vh;
     padding: 10px;
@@ -25,7 +28,7 @@ body {
     align-items: center;
 }
 
-h1{
+h1 {
     margin-top: 100px;
     margin-bottom: 20px;
     font-size: 3rem;
@@ -34,6 +37,8 @@ h1{
     text-align: center;
     color: var(--accent-color);
 }
+
+/* Todo List Styles */
 .wrapper {
     width: 700px;
     max-width: 100%;
@@ -41,7 +46,8 @@ h1{
     flex-direction: column;
     gap: 10px;
 }
-#todo-input{
+
+#todo-input {
     box-sizing: border-box;
     padding: 12px 20px;
     width: 100%;
@@ -52,18 +58,19 @@ h1{
     color: var(--text-color);
     caret-color: var(--accent-color);
 }
-#todo-input:focus{
-    outline:none;
+
+#todo-input:focus {
+    outline: none;
 }
+
 form {
     position: relative;
 }
 
-#add-button{
+#add-button {
     position: absolute;
     top: 0;
     right: 0;
-
     background-color: var(--accent-color);
     height: 100%;
     padding: 0 30px;
@@ -74,6 +81,8 @@ form {
     color: var(--background);
     cursor: pointer;
 }
+
+/* Todo Item Styles */
 .todo {
     margin-bottom: 10px;
     padding: 0 16px;
@@ -81,14 +90,17 @@ form {
     border-radius: 15px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.todo .todo-text{
+
+.todo .todo-text {
     padding: 15px;
     padding-right: 0;
     flex-grow: 1;
     transition: 200ms ease;
 }
-.delete-button{
+
+.delete-button {
     padding: 3px;
     background: none;
     border: none;
@@ -97,13 +109,17 @@ form {
     align-items: center;
     cursor: pointer;
 }
-.delete-button svg{
-    transition:  200ms ease;
+
+.delete-button svg {
+    transition: 200ms ease;
 }
-.delete-button:hover svg{
+
+.delete-button:hover svg {
     fill: #ff0033;
 }
-.custom-checkbox{
+
+/* Custom Checkbox Styles */
+.custom-checkbox {
     border: 2px solid var(--accent-color);
     border-radius: 50%;
     min-height: 20px;
@@ -115,32 +131,119 @@ form {
     transition: 200ms ease;
     cursor: pointer;
 }
-input[type="checkbox"]:checked ~ .custom-checkbox{
+
+input[type="checkbox"]:checked ~ .custom-checkbox {
     background-color: var(--accent-color);
 }
-input[type="checkbox"]:checked ~ .custom-checkbox svg{
+
+input[type="checkbox"]:checked ~ .custom-checkbox svg {
     fill: var(--primary-color);
 }
-input[type="checkbox"]:checked  ~ .todo-text{
+
+input[type="checkbox"]:checked ~ .todo-text {
     text-decoration: line-through;
     color: var(--secondary-color);
 }
-input[type="checkbox"]{
+
+input[type="checkbox"] {
     display: none;
 }
-@media(max-width: 500px){
-    html{
-        font-size: 12pt;   
+
+/* Calendar Modal */
+#calendar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#current-month {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.date {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.date:hover {
+    background-color: var(--accent-color);
+}
+
+.confirm-btn, .close-btn {
+    background-color: var(--accent-color);
+    color: var(--background);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.confirm-btn:hover, .close-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 500px) {
+    html {
+        font-size: 12pt;
     }
-    #add-button{
+
+    #add-button {
         position: unset;
         width: 100%;
         margin-top: 10px;
-        padding:15px;
+        padding: 15px;
         height: auto;
     }
-    h1{
+
+    h1 {
         margin-top: 50px;
         font-size: 15vw;
     }
+}
+.todo-deadline {
+    font-size: 14px;             /* Set font size */
+    color: #FF6347;              /* Set color for the text (e.g., Tomato color) */
+    font-weight: bold;           /* Make the text bold */
+    margin-left: 10px;           /* Add space to the left of the text */
+    display: inline-block;       /* Keep the deadline text inline with other elements */
+    text-transform: lowercase; 
+}
+.todo-deadline.completed{
+    color:#00FFC4;
+    text-transform: capitalize;
 }

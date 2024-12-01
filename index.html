@@ -14,8 +14,27 @@
             <input id="todo-input" type="text" placeholder="insert whatevs here :3" autocomplete="off">
             <button id="add-button">ADD</button>
         </form>
-        <ul id="todo-list">
 
+<!-- Modal -->
+<div id="calendar-modal" class="modal">
+    <div class="modal-content">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month">←</button>
+                <span id="current-month">December 2024</span>
+                <button id="next-month">→</button>
+            </div>
+            <div class="calendar-days">
+                <!-- Calendar days will be dynamically inserted here -->
+            </div>
+            <button id="confirm-date" class="confirm-btn">Confirm Date</button>
+            <button id="close-calendar" class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+        <ul id="todo-list">
+            <!-- Todo items will be dynamically added here -->
         </ul>
     </div>
 </body>
